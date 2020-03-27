@@ -1,2 +1,0 @@
-# LuanReinheimer-LuanReinheimer
-Projeto_integrador_UCS

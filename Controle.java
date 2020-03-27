@@ -49,7 +49,7 @@ public class Controle {
 					System.out.println("-----MÚSICA ADICIONADA NO INÌCIO-----");
 					break;
 				case 2:
-					System.out.print("Nome da música? ");
+					System.out.print("Nome da música ");
 					nomeMusica = entradaString.nextLine();
 					System.out.print("Nome do cantor/cantora? ");
 					cantor = entradaString.nextLine();

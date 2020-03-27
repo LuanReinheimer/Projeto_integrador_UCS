@@ -1,7 +1,7 @@
 package projeto_integrador_UCS;
 
-public class Musicas implements Comparable<Musicas> {
-
+public class Musicas implements Comparable<Musicas>{
+	//public static ArrayList<Musicas> lista = new ArrayList<>();
 	public String proximo;
 	public Musicas aterior;
 	public int num;
@@ -10,14 +10,14 @@ public class Musicas implements Comparable<Musicas> {
 	public String cantor;
 	public String banda;
 	public String album;
-	public int ano;
+	public String ano;
 	public String genero;
 	public String anterior;
-
-	public Musicas() {
-	}
-
-	public Musicas(String nomeMusica, String cantor, String banda, String album, int ano, String genero) {
+	
+	public Musicas(){}
+	
+	public Musicas(String nomeMusica, String cantor, String banda, String album, String ano, String genero)
+	{
 		this.nomeMusica = nomeMusica;
 		this.cantor = cantor;
 		this.banda = banda;
@@ -25,82 +25,69 @@ public class Musicas implements Comparable<Musicas> {
 		this.ano = ano;
 		this.genero = genero;
 	}
+	public Musicas(String aNome) {
+		nomeMusica = aNome;
+	}
 
-//------------------------------------------------------------------------------	
-	public void setNomeMusica(String nomeMusica) {
+	//------------------------------------------------------------------------------	
+	public void setNomeMusica(String nomeMusica){
 		this.nomeMusica = nomeMusica;
 	}
-
-	public String getNomeMusica() {
-		return this.nomeMusica;
+	public String getNomeMusica(){
+		return nomeMusica;
 	}
-
+	@Override
+	public int compareTo(Musicas outro) {
+		
+		int compareInt = this.nomeMusica.compareTo(outro.nomeMusica);
+		if(compareInt < 0) return -1;
+		if(compareInt > 0) return 1;
+		return 0;
+	}	
+	//public String toString() {
+	//	return this.nomeMusica;
+//	}
 //----------------------------------------------------------------------------				
-	public void setCantor(String cantor) {
+	public void setCantor(String cantor){
 		this.cantor = cantor;
-	}
-
-	public String getCantor() {
+	}	
+	public String getCantor(){
 		return cantor;
-	}
-
+	}	
 //------------------------------------------------------------------------------
-	public void setBanda(String banda) {
+	public void setBanda(String banda){
 		this.banda = banda;
 	}
-
-	public String getBanda() {
+	public String getBanda(){
 		return this.banda;
 	}
-
 //------------------------------------------------------------------------------	
-	public void setAlbum(String album) {
-		this.album = album;
-	}
-
-	public String getAlbum() {
+	public void setAlbum(String album){
+		this.album = album;	
+	}			
+	public String getAlbum(){
 		return this.album;
-	}
-
+	}	
 //-------------------------------------------------------------------------------
-	public void setAno(int ano) {
-		this.ano = ano;
-	}
-
-	public int getAno() {
+	public void setAno(String ano){
+		this.ano = ano;	
+	}			
+	public String getAno(){
 		return this.ano;
-	}
-
+	}		
 //--------------------------------------------------------------------------------			
-	public void setGenero(String genero) {
+	public void setGenero(String genero){
 		this.genero = genero;
 	}
-
-	public String getGenero() {
+	public String getGenero(){
 		return this.genero;
 	}
-
 //-----método da classe----------------------------------------------------------------
-	public String visualizar1() {
-		// Arrays.sort(ano);
-		return nomeMusica + " / " + cantor + " / " + banda + " / " + album + " / " + ano + " / " + genero;
+	public String visualizar1() {	
+		return nomeMusica +" / "+ cantor +" / "+ banda +" / "+ album +" / "+ ano +" / "+ genero;
 	}
 
-	public boolean getAno(int ano) {
-		return false;
-	}
-
-	public Object toLowerCase() {
-
-		return null;
-	}
-
-	@Override
-	public int compareTo(Musicas arg0) {
-		return 0;
-	}
-	public String toString() {
-		return this.nomeMusica;
-	}
-	
 }
+
+
+

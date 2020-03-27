@@ -108,12 +108,12 @@ public class ListaMusicas implements Serializable {
 		}
 	}
 //------------------------------------------------------------------------------------
-	static public int Sorteio(Playlists playlistNova){
+	static public Playlists Sorteio(Playlists playlistNova){
 		ArrayList Sorteio = new ArrayList<>();
 		
 		Collections.shuffle(lista);
 		lista.add(playlistNova);
-		System.out.println("111"+playlistNova);
+		System.out.println("111" + playlistNova);
 	    System.out.println(lista.toString()+"****");
 	    return playlistNova;
 	    

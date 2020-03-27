@@ -133,13 +133,13 @@ public class Controle {
 						
 						nomeMusica = entradaString.nextLine();	
 						musicaNova = new Musicas(nomeMusica);
-						ListaPlaylists.adicionarMusica(playlistNova);
+						ListaPlaylist.adicionarMusica(playlistNova);
 						//playlistNova.adicionarInicio(nomeMusica);
 						System.out.print("\n"+"Adicionar música?" 
 						+"\n"+ "SIM = 1 / NÃO = 2: ");
 						resposta = Integer.parseInt(entradaString.nextLine());
 						}while(resposta==1);
-						ListaPlaylists.adicionarPlaylists(playlistNova);
+						ListaPlaylist.adicionarPlaylists(playlistNova);
 							System.out.print("\n"+"---Músicas adicionadas na Playlist!---");
 							System.out.println("\n"+"!!PLAYLIST CONCLUÍDA!!");
 					   
@@ -148,7 +148,7 @@ public class Controle {
 					System.out.print("\n"+"Nome da Playlist:         ");
 					nomePlaylist = entradaString.nextLine();
 					playlistNova = new Playlists(nomePlaylist);
-					ListaPlaylists.adicionarPlaylists(playlistNova);
+					ListaPlaylist.adicionarPlaylists(playlistNova);
 					System.out.println("Quantas músicas adicionar: ");
 					numMusicas = entrada.nextInt();
 					ListaMusicas.Sorteio(playlistNova);					
@@ -158,7 +158,7 @@ public class Controle {
 //---------------------------Imprime as playlists de músicas-----------------------------------
 			case 8:
 				System.out.println("-----LISTA DE Playlists----");
-				System.out.println(ListaPlaylists.listarPlaylists());
+				System.out.println(ListaPlaylist.listarPlaylists());
 				break;				
 			default:
 				System.out.println("\nOpção inválida!\n");

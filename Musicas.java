@@ -100,4 +100,8 @@ public class Musicas implements Comparable<Musicas> {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	public String toString() {
+		return this.nomeMusica;
+	}
+	
 }

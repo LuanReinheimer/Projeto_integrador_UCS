@@ -12,7 +12,8 @@ public class Controle {
 
 		int menu;
 		Musicas musicaNova;
-		String nomeMusica, cantor, banda, album, genero;
+		String nomeMusica; 
+		String cantor, banda, album, genero;
 		int ano;
 
 		Playlists playlistNova;
@@ -32,7 +33,7 @@ public class Controle {
 				switch (item) {
 				case 1:
 					System.out.print("Nome da música? ");
-					nomeMusica = entradaString.nextLine();
+					nomeMusica = toString(entradaString.nextLine());
 					System.out.print("Nome do cantor/cantora? ");
 					cantor = entradaString.nextLine();
 					System.out.print("Nome da banda/grupo? ");
@@ -143,7 +144,7 @@ public class Controle {
 
 				System.out.println("\n" + "!!PLAYLIST CONCLUÍDA!!");
 				break;
-//---------------------------Imprime as playlists de músicas-----------------------------------
+//-----------mprime as playlists de músicas-----------------------------------
 			case 8:
 				System.out.println("-----LISTA DE Playlists----");
 				System.out.println(ListaMusicas.listarPlaylists());
@@ -155,6 +156,10 @@ public class Controle {
 
 		} while (menu != 9);
 
+	}
+
+	public static String toString(String nomeMusica) {
+			return nomeMusica;
 	}
 
 	static void mostrarMenu() {

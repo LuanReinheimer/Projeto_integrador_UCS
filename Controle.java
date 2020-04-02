@@ -1,22 +1,23 @@
-package projeto_integrador_UCS;
+package Projeto;
 
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Controle {
-		
-	@SuppressWarnings({ "resource", "unused" })
-	public static void main(String[] args) {
 	
+	private static ListaMusicas minhasMusicas = new ListaMusicas();
+	private static ListaPlaylists minhaPlaylist = new ListaPlaylists();
+		
+	public static void main(String[] args) {
+			
+		@SuppressWarnings("resource")
 		Scanner entrada = new Scanner(System.in);
+		@SuppressWarnings("resource")
 		Scanner entradaString = new Scanner(System.in);
 
-		Musicas musicaNova = null;
-		String nomeMusica = null, cantor = null, banda = null, album = null, genero = null;
-		String ano = null;
+		Musicas musicaNova;
+		String nomeMusica, cantor = null, banda = null, album = null, genero = null, ano = null;
 		
-		Playlists playlistNova = null;
+		Playlists playlistNova;
 		String nomePlaylist;
 		
 		int menu;
@@ -41,27 +42,26 @@ public class Controle {
 					System.out.print("Genero: ");
 					genero = entradaString.nextLine();
 					musicaNova = new Musicas(nomeMusica, cantor, banda, album, ano, genero);
-				//	ListaMusicas.salvaMusicas(musicaNova);
 					
-					ListaMusicas.adicionarMusica(musicaNova);
+					minhasMusicas.adicionarMusica(musicaNova);
 					System.out.println("\n"+"-----MÚSICA ADICIONADA-----");
 					break;				
 //----------Imprime a lista de musicas-----------------------------------				
 			case 2:
-				if(ListaMusicas.getListaMusicasSize() == 0) {
-					System.out.println("\n"+"-----LISTA VAZIA----");
+				if(minhasMusicas.tamanho() == 0) {
+					System.out.println("\n"+"---> LISTA VAZIA <---");
 				}else {
 				System.out.println("\n"+"-----LISTA DE MUSICAS----\n");
-				for(int i = 0; i < ListaMusicas.getListaMusicasSize(); i++) {				
+				for(int i = 0; i < minhasMusicas.tamanho(); i++) {				
 				}
-				System.out.print("A lista possui " + ListaMusicas.getListaMusicasSize() + " músicas!\n");
-				System.out.println("\n" + ListaMusicas.listarMusicas());
+				System.out.print("A lista possui " + minhasMusicas.tamanho() + " músicas!\n");
+				System.out.println("\n" + minhasMusicas.listarMusicas());
 				}
 				break;
 //----------Excluir musicas----------------------------------------------			
 			case 3:	
-				if (ListaMusicas.getLista().isEmpty()) {
-					System.out.println("\n"+"-----A LISTA ESTÁ VAZIA-----");
+				if (minhasMusicas.tamanho() == 0) {
+					System.out.println("\n"+"---> A LISTA ESTÁ VAZIA <---");
 					}else {
 					int opcao;
 					System.out.println("Excluir no início = 1" 
@@ -72,42 +72,42 @@ public class Controle {
 				
 					switch(opcao) {
 					case 1:
-						ListaMusicas.excluirInicio();
+						minhasMusicas.excluirInicio();
 						System.out.println("-----MÚSICA EXCLUIDA DO INÌCIO-----");
 						break;
 					case 2:
-						ListaMusicas.excluirFim();
+						minhasMusicas.excluirFim();
 						System.out.println("-----MÚSICA EXCLUIDA DO FINAL-----");
 						break;
 					case 3:
 						System.out.println("Qual música quer excluir?");
 						nomeMusica = entradaString.next();			
-						if(ListaMusicas.excluirNome(nomeMusica)) {
+						if(minhasMusicas.excluirNome(nomeMusica)) {
 						System.out.println("-----MÚSICA EXCLUIDA-----");
 						}else {
 							System.out.println("!!MÚSICA NÃO ENCONTRADA NA LISTA!!");
 						break;
 						}					
+					}
 				}
-			}
 			break;
 //----------Imprime músicas pelo Genero-----------------------------------				
 			case 4:
 				System.out.print("\n"+"Digite o genero: ");
 				genero = entradaString.next();
-				System.out.println("\n"+"As músicas do genero - "+ genero +"\n"+ ListaMusicas.pesquisar(genero));
+				System.out.println("\n"+"As músicas do genero - "+ genero +"\n"+ minhasMusicas.pesquisar(genero));
 				break;
 //----------Imprime músicas pela Banda/Grupo----------------------------------
 			case 5:
 				System.out.print("Digite a Banda/Grupo:");
 				banda = entradaString.next();
-				System.out.println("\n"+"As músicas da banda - " + banda +"\n"+ ListaMusicas.pesquisar1(banda));
+				System.out.println("\n"+"As músicas da banda - " + banda +"\n"+ minhasMusicas.pesquisar1(banda));
 				break;
 //----------Imprime músicas pelo Ano de lançamento---------------------------
 			case 6:
 				System.out.print("Digite o Ano de lançamento:");
 				ano = entradaString.nextLine();
-				System.out.println("\n"+"As músicas lançadas no ano de - "+ ano +"\n" + ListaMusicas.pesquisar3(ano));
+				System.out.println("\n"+"As músicas lançadas no ano de - "+ ano +"\n" + minhasMusicas.pesquisar3(ano));
 				break;
 //-------------------------Cria uma playlist de músicas-----------------------------------
 			case 7:
@@ -120,44 +120,60 @@ public class Controle {
 				switch(item) {
 				case 1:
 					System.out.println("\n"+"-----LISTA DE MUSICAS----");
-					System.out.println(ListaMusicas.listarMusicas());
-
+					System.out.println(minhasMusicas.listarMusicas());
+									
 					System.out.print("\n"+"Nome da Playlist:         ");
 					nomePlaylist = entradaString.nextLine();
-					playlistNova = new Playlists(nomePlaylist, nomeMusica, cantor, banda, album, ano, genero);
-					ListaPlaylists.adicionarPlaylists(playlistNova);
-					int resposta = 1;
-					do {	
-						
+					playlistNova = new Playlists(nomePlaylist);
+					minhaPlaylist.adicionarPlaylists(playlistNova);
+					
+					int resposta = 1;					
+					do {
 						System.out.print("Nome da música: ");
 						nomeMusica = entradaString.nextLine();
-						musicaNova = new Musicas(nomeMusica, cantor, banda, album, ano, genero);					
-						ListaMusicas.adicionarPlaylists(musicaNova);									
+						musicaNova = new Musicas(nomeMusica, cantor, banda, album, ano, genero);
+						minhasMusicas.adicionarMusica(musicaNova);
+						
+						for(int i = 0; i > minhasMusicas.tamanho(); i++) {						
+							musicaNova = minhasMusicas.get(i);
+							if(nomeMusica.equals(musicaNova.getNomeMusica())){
+								minhaPlaylist.adicionaNaPlaylist(musicaNova);
+							}	
+						}
 						System.out.print("\n"+"Adicionar música?" 
 						+"\n"+ "SIM = 1 / NÃO = 2: ");
 						resposta = Integer.parseInt(entradaString.nextLine());
-						}while(resposta==1);
 						
-							System.out.print("\n"+"---Músicas adicionadas na Playlist!---");
-							System.out.println("\n"+"!!PLAYLIST CONCLUÍDA!!");					   
+						}while(resposta==1);
+					
+						System.out.print("\n"+"---Músicas adicionadas na Playlist!---");
+						System.out.println("\n"+    "==!!PLAYLIST CONCLUÍDA!!==");	
+					
 					break;
 				case 2:
-					System.out.print("\n"+"Nome da Playlist:         ");
-					nomePlaylist = entradaString.nextLine();
-					playlistNova = new Playlists(nomePlaylist, nomeMusica, cantor, banda, album, ano, genero);										
-					int numero;
-					System.out.println("Quantas músicas adicionar: ");					
-					numero = entrada.nextInt();
-					ListaMusicas.sorteio();	
-					ListaPlaylists.adicionarPlaylists(playlistNova);
-					ListaPlaylists.adicionarMusica1();
+					//System.out.print("\n"+"Nome da Playlist:         ");
+				//	nomePlaylist = entradaString.nextLine();
+				//	playlistNova = new Playlists(nomePlaylist, nomeMusica, cantor, banda, album, ano, genero);										
+				//	int numero;
+				//	System.out.println("Quantas músicas adicionar: ");					
+					
+				//	ListaMusicas.sorteio();	
+				//	ListaPlaylists.adicionarPlaylists(playlistNova);
+				//	ListaPlaylists.adicionarMusica1();
 					break;
 				}
 				break;
 //---------------------------Imprime as playlists de músicas-----------------------------------
 			case 8:
-				System.out.println("\n"+"-----LISTA DE PLAYLISTS-----\n");
-				System.out.println(ListaPlaylists.listarPlaylists());
+				if (minhaPlaylist.tamanho() == 0) {
+					System.out.println("\n"+"---> NÃO EXISTEM PLAYLISTS <---");
+					}else {
+					for(int i = 0; i < minhasMusicas.tamanho(); i++) {				
+					}
+					System.out.println("\n"+"-----LISTA DE PLAYLISTS-----\n");
+					System.out.print("A lista possui " + minhaPlaylist.tamanho() + " Playlist!"+"\n");					
+					System.out.println(minhaPlaylist.listarPlaylists());
+					}
 				break;				
 			default:
 				System.out.println("\nOpção inválida!\n");
@@ -174,7 +190,7 @@ public class Controle {
 				+ "\n5- VISUALIZAR BANDAS/GRUPOS"
 				+ "\n6- VISUALIZAR ANO LANÇAMENTO" 
 				+ "\n7- CRIAR MINHA PLAYLIST"  
-				+ "\n8- VISUALIZAR PLAYLISTS"
+				+ "\n8- LISTA DE PLAYLISTS"
 				+ "\n9- SAIR" 
 				+ "\nDIGITE AQUI: ");
 	}

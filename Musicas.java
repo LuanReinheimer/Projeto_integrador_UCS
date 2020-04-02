@@ -1,23 +1,19 @@
-package projeto_integrador_UCS;
+package Projeto;
 
-public class Musicas implements Comparable<Musicas>{
-	//public static ArrayList<Musicas> lista = new ArrayList<>();
-	public String proximo;
-	public Musicas aterior;
-	public int num;
-//----------------------------------------------------------------------------------
+public class Musicas implements  Comparable<Musicas>{
+	
 	public String nomeMusica;
 	public String cantor;
 	public String banda;
 	public String album;
 	public String ano;
 	public String genero;
-	public String anterior;
 	
-	public Musicas(){}
+	public Musicas(){} 
 	
-	public Musicas(String nomeMusica, String cantor, String banda, String album, String ano, String genero)
-	{
+//--------------------------------Construtor------------------------------------	
+	public Musicas(String nomeMusica, String cantor, String banda, String album, String ano, String genero) {
+		
 		this.nomeMusica = nomeMusica;
 		this.cantor = cantor;
 		this.banda = banda;
@@ -25,11 +21,7 @@ public class Musicas implements Comparable<Musicas>{
 		this.ano = ano;
 		this.genero = genero;
 	}
-	public Musicas(String aNome) {
-		nomeMusica = aNome;
-	}
-
-	//------------------------------------------------------------------------------	
+//----------------------------Setters e Getters----------------------------------
 	public void setNomeMusica(String nomeMusica){
 		this.nomeMusica = nomeMusica;
 	}
@@ -37,16 +29,13 @@ public class Musicas implements Comparable<Musicas>{
 		return nomeMusica;
 	}
 	@Override
-	public int compareTo(Musicas outro) {
+	public int compareTo(Musicas outro) { // compara os objetos nomeMusica
 		
 		int compareInt = this.nomeMusica.compareTo(outro.nomeMusica);
 		if(compareInt < 0) return -1;
 		if(compareInt > 0) return 1;
 		return 0;
 	}	
-	//public String toString() {
-	//	return this.nomeMusica;
-//	}
 //----------------------------------------------------------------------------				
 	public void setCantor(String cantor){
 		this.cantor = cantor;
@@ -83,11 +72,8 @@ public class Musicas implements Comparable<Musicas>{
 		return this.genero;
 	}
 //-----método da classe----------------------------------------------------------------
-	public String visualizar1() {	
-		return nomeMusica +" / "+ cantor +" / "+ banda +" / "+ album +" / "+ ano +" / "+ genero;
-	}
-
+	public String imprimeMusica() {	
+		return "|"+nomeMusica+"|"+" - "+ cantor +" - "+ banda +" - "+ album +" - "+ ano +" - "+ genero;
+	}	
+	
 }
-
-
-

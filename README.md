@@ -1,6 +1,6 @@
 # Projeto_integrador_UCS
 
-Projeto_integrador_UCS 1ª etapa.
+                        Projeto_integrador_UCS 1ª etapa.
 
 No Projeto Integrador do quinto módulo vamos empregar os conhecimentos
 desenvolvidos nas disciplinas de Programação Orientada a Objetos (POO) e Estruturas de
@@ -128,7 +128,7 @@ programa de computador capaz de expressar a solução proposta;
 encontradas e soluções propostas.
 ----------------------------------------------------------------------------------------------
 
-                Segunda Etapa do Projeto Integrador
+                Projeto_integrador_UCS 2ª etapa
   Na segunda etapa do projeto serão incluídas novas características à estrutura do projeto
 da primeira etapa, integrando outros elementos que compõem o modelo de objetos e recursos
 da linguagem Java. Para isso realize as duas ações abaixo:
